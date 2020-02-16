@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About this Repo : 
+- Material-ui 
+- React DropZone 
+- Redux 
+- TypeScript
+- Material Icons
+- React Hooks
+- Auto Completion for text  
 
 ## Available Scripts
 
