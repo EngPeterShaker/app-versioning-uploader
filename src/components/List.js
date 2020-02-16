@@ -7,12 +7,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FolderIcon from "@material-ui/icons/Folder";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import AppModal from "./AppModal";
 import { useSelector } from "react-redux";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +21,9 @@ const useStyles = makeStyles(theme => ({
   },
   nested: {
     paddingLeft: theme.spacing(4)
+  },
+  selectedApp: {
+    backgroundColor: "#ccc"
   }
 }));
 
@@ -32,10 +34,12 @@ export default function NestedList() {
 
   const handleClick = id => {
     setOpen(!open);
+    console.log("id", id);
     setOpenedId(openedId !== id ? id : null);
   };
   const appsList = useSelector(({ apps }) => apps.appsList);
-  console.log("appsList", appsList);
+  const files = useSelector(({ apps }) => apps.files);
+  console.log("files", files);
 
   return (
     <>
@@ -51,14 +55,19 @@ export default function NestedList() {
                 aria-labelledby="nested-list-subheader"
                 subheader={
                   <ListSubheader component="div" id="nested-list-subheader">
-                  Apps Items
+                    Apps Items
                   </ListSubheader>
                 }
                 className={classes.root}
               >
                 {Object.keys(appsList).length > 0 &&
                   Object.keys(appsList).map(i => (
-                    <ListItem button key={i} onClick={() => handleClick(i)}>
+                    <ListItem
+                      button
+                      key={i}
+                      onClick={() => handleClick(i)}
+                      className={openedId === i ? classes.selectedApp : ""}
+                    >
                       <ListItemIcon>
                         {openedId === i ? <FolderOpenIcon /> : <FolderIcon />}
                       </ListItemIcon>
@@ -75,39 +84,23 @@ export default function NestedList() {
                 aria-labelledby="nested-list-subheader"
                 subheader={
                   <ListSubheader component="div" id="nested-list-subheader">
-                 Versions Items
+                    Versions Items
                   </ListSubheader>
                 }
                 className={classes.root}
               >
-                  {openedId && appsList[openedId].length > 0 &&
-                 appsList[openedId].map(i => (
+                {openedId &&
+                  appsList[openedId].length > 0 &&
+                  appsList[openedId].map(i => (
                     <ListItem button key={i}>
                       <ListItemIcon>
-                      <InsertDriveFileIcon />
+                        <InsertDriveFileIcon />
                       </ListItemIcon>
                       <ListItemText primary={i} />
+                      {/* <p>{files[`${appsList[openedId]}v${i}`]}</p> */}
+                      <ListItemText secondary={files[`${openedId}v${i}`]} />
                     </ListItem>
                   ))}
-                {/* <ListItem button>
-                  <ListItemIcon>
-                    <SendIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Sent mail" />
-                </ListItem>
-                <ListItem button>
-                  <ListItemIcon>
-                    <DraftsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Drafts" />
-                </ListItem>
-                <ListItem button onClick={handleClick}>
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Inbox" />
-                  {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem> */}
               </List>
             </Paper>
           </Grid>
