@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a7c66a5c-6245-473e-948e-89df2436dd03/deploy-status)](https://app.netlify.com/sites/app-versions-uploader/deploys)
+
 ## About this Repo : 
 - Material-ui 
 - React DropZone 
