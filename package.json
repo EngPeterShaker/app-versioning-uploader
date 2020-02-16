@@ -9,7 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.42",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.15",
-    "@types/react": "^16.7.17",
+    "@types/react": "16.8.19",
     "@types/react-dom": "^16.0.11",
     "lodash": "^4.17.15",
     "react": "^16.8.6",
