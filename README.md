@@ -8,6 +8,7 @@
 - Material Icons
 - React Hooks
 - Auto Completion for text  
+- Continous Deployement on [Netlify](https://app-versions-uploader.netlify.com/)
 
 ## Available Scripts
 
