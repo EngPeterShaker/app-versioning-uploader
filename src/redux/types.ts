@@ -2,9 +2,7 @@ export interface AppsState {
   appsList: {
     [key: string]: string[];
   },
-  // appsList: string[],
-
+  files:{
+    [key: string]: string[];
+  }
 }
-// export interface appsList {
-//   [key: string]: string[];
-// }
